@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default class PokemonDetail extends Component {
     
     render() {
-        const { id, name, url } = this.props.pokemon;
+        const { name, id } = this.props.pokemon;
 
         return (
-            <div className="card" onClick={this.props.getPokemonDetails.bind(this, id)} >
-                <h3>{ name }</h3>
-                <p>{ url }</p>
-            </div>
+            <Link to={`/pokemons/${id}`} >
+                <div className="card" key={id} onClick={this.props.getPokemonDetails.bind(this, id)} >
+                    <h3>{ name }</h3>
+                </div>
+            </Link>
         )
     }
 }

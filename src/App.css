@@ -17,7 +17,8 @@ a {
 .container {
   padding: 0 1rem;
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
+  padding: 20px;
 }
 
 .card {
