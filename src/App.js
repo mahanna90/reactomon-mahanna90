@@ -11,15 +11,24 @@ import About from './components/About';
 
 export default class App extends Component {
 
-  state = {
-    pokemons: []
+  constructor() {
+    super();
+    this.state = {
+      pokemons: [],
+      types: []
+    }
   }
+  
 
   getPokemonDetails = (id) => {
     console.log(`clicked on pokemon: ${id}`);
   }
 
-  setIds = () => {
+  getTypeDetails = (id) => {
+    console.log(`clicked on type: ${id}`);
+  }
+
+  setPokemonIds = () => {
     let urlParts = [];
     let currentUrl = "";
     let pokemonIds = [];
@@ -33,19 +42,41 @@ export default class App extends Component {
     const newData = this.state.pokemons.map((pokemon, i) => {
       return {...pokemon, id: pokemonIds[i]};
     });
-    console.log("newData");
-    console.log(newData);
 
     this.setState({pokemons: newData });
+  }
+
+  setTypeIds = () => {
+    let urlParts = [];
+    let currentUrl = "";
+    let typeIds = [];
+    this.state.types.map((type) => {
+      currentUrl = type.url;
+      urlParts = currentUrl.split("/");
+      typeIds.push(urlParts[urlParts.length-2]);
+      return type;
+    });
+
+    const newData = this.state.types.map((type, i) => {
+      return {...type, id: typeIds[i]};
+    });
+
+    this.setState({types: newData });
   }
 
   componentDidMount() {
     axios.get('https://pokeapi.co/api/v2/pokemon/')
       .then(response => this.setState({pokemons: response.data.results}))
-      .then(this.setIds)
+      .then(this.setPokemonIds);
+
+    axios.get('https://pokeapi.co/api/v2/type/')
+    .then(response => this.setState({types: response.data.results}))
+    .then(this.setTypeIds);;
+
   }
 
   render () {
+    console.log(this.state);
 
     return (
       <Router>
@@ -64,7 +95,7 @@ export default class App extends Component {
           )} />
           <Route exact path="/types" render={(props) => (
             <>
-              <TypeList />
+              <TypeList tpyes={this.state.types} getTypeDetails={this.getTypeDetails} />
             </>
           )} />
           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
