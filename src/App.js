@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/layouts/header';
 import PokemonList from './components/PokemonList';
+import TypeList from './components/TypeList';
 import { v4 as uuidv4 } from 'uuid';
 
 export default class App extends Component {
@@ -30,6 +31,7 @@ export default class App extends Component {
       <div className="App">
         <Header />
         <PokemonList pokemons={this.state.pokemons} getPokemonDetails={this.getPokemonDetails} />
+        <TypeList />
         
       </div>
     );
