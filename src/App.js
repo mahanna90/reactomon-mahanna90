@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/layouts/header';
 import PokemonList from './components/PokemonList';
+import { v4 as uuidv4 } from 'uuid';
 
 export default class App extends Component {
 
@@ -10,12 +11,12 @@ export default class App extends Component {
       {
         name: "Pikachu",
         url: "xyz.hu",
-        id: 1
+        id: uuidv4()
       },
       {
         name: "Charmander",
         url: "asd.hu",
-        id: 2
+        id: uuidv4()
       }
     ]
   }
