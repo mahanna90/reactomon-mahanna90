@@ -51,6 +51,8 @@ export default class App extends Component {
               <TypeList />
             </>
           )} />
+
+          
           <Route exact path="/about" component={About} />     
           
         </div>
