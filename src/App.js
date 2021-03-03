@@ -23,10 +23,10 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            <h1>Reactomon</h1>
+          <h1>Reactomon</h1>
         </header>
         <div className="container">
-        <PokemonList pokemons={this.state.pokemons} />
+          <PokemonList pokemons={this.state.pokemons} />
         </div>
       </div>
     );
