@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PokemonDetail from './PokemonDetail';
+import PropTypes from 'prop-types';
 
 export default class PokemonList extends Component {
     render() {
         return this.props.pokemons.map((pokemon) => (
-            <div className="card" key={ pokemon.id } >
-                <h3>{ pokemon.name }</h3>
-                <p>{ pokemon.url }</p>
-            </div>
+            <PokemonDetail key={pokemon.id} pokemon={pokemon} />
         ))
             
         
@@ -14,3 +13,6 @@ export default class PokemonList extends Component {
 }
 
 
+PokemonList.propTypes = {
+    pokemons: PropTypes.array.isRequired
+}
