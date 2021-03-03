@@ -20,12 +20,14 @@ export default class App extends Component {
   }
 
   render () {
-    console.log(this.state.pokemons);
     return (
       <div className="App">
         <header className="App-header">
-          <PokemonList />
+            <h1>Reactomon</h1>
         </header>
+        <div className="container">
+        <PokemonList pokemons={this.state.pokemons} />
+        </div>
       </div>
     );
   }
