@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class PokemonDetail extends Component {
-
-    getDetails = (e) => {
-        console.log("clicked on pokemon");
-        console.log(e.currentTarget);
-    }
     
     render() {
+        const { id, name, url } = this.props.pokemon;
+
         return (
-            <div className="card" onClick={this.getDetails} >
-                <h3>{ this.props.pokemon.name }</h3>
-                <p>{ this.props.pokemon.url }</p>
+            <div className="card" onClick={this.props.getPokemonDetails.bind(this, id)} >
+                <h3>{ name }</h3>
+                <p>{ url }</p>
             </div>
         )
     }

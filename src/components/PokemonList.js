@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 export default class PokemonList extends Component {
     render() {
         return this.props.pokemons.map((pokemon) => (
-            <PokemonDetail key={pokemon.id} pokemon={pokemon} />
-        ))
-            
+            <PokemonDetail key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />
+        ))  
         
     }
 }

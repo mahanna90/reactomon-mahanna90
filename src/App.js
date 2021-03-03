@@ -19,6 +19,10 @@ export default class App extends Component {
     ]
   }
 
+  getPokemonDetails = (id) => {
+    console.log(`clicked on pokemon: ${id}`);
+}
+
   render () {
     return (
       <div className="App">
@@ -26,7 +30,7 @@ export default class App extends Component {
           <h1>Reactomon</h1>
         </header>
         <div className="container">
-          <PokemonList pokemons={this.state.pokemons} />
+          <PokemonList pokemons={this.state.pokemons} getPokemonDetails={this.getPokemonDetails} />
         </div>
       </div>
     );
