@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 // import { v4 as uuidv4 } from 'uuid';
 // import axios from 'axios';
 import './App.css';
-import Header from './components/layouts/header';
+import Header from './components/layouts/Header';
 import PokemonList from './components/PokemonList';
 import TypeList from './components/TypeList';
 import NavBar from './components/NavBar';
 import About from './components/About';
 import PokemonDetail from './components/PokemonDetail';
+import Home from './components/Home';
+import Footer from './components/layouts/Footer';
+
 
 export default class App extends Component {
 
@@ -31,7 +34,7 @@ export default class App extends Component {
           <NavBar />
           <Route exact path="/" render={(props) => (
             <>
-              <h1>Main page</h1>
+              <Home />
             </>
           )} />
           <Route exact path="/pokemons" render={(props) => (
@@ -57,7 +60,7 @@ export default class App extends Component {
 
           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
           <Route exact path="/about" component={About} />     
-          
+          <Footer />
         </div>
       </Router>
     );

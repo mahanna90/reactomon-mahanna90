@@ -1,9 +1,10 @@
 import React from 'react';
+import title from '../../images/download.png';
 
 export default function header() {
     return (
         <header className="App-header">
-          <h1>Reactomon</h1>
+          <img src={title} alt="pikachu_title_image" />
         </header>
     )
 }

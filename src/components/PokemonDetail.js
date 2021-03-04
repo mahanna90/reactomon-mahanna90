@@ -26,18 +26,20 @@ export default class PokemonDetail extends Component {
         console.log("running render");
         
         return (
-            <div className="bigcard">
-                <div>
-                    <h1>{ this.state.pokemonDetails.name }</h1>
-                </div>
-                <div>
-                    <img src={this.state.pokemonDetails.sprites ? this.state.pokemonDetails.sprites.other["official-artwork"].front_default : ""} alt={ this.state.pokemonDetails.name } />
-                </div>
-                <div>
-                    <h3>Types: </h3>
-                    {this.state.pokemonDetails.types ? this.state.pokemonDetails.types.map((type) => (
-                        <p key={type.type.name}>{ type.type.name }</p>
-                    )) : "" }
+            <div className="container">
+                <div className="bigcard">
+                    <div>
+                        <h1>{ this.state.pokemonDetails.name }</h1>
+                    </div>
+                    <div>
+                        <img src={this.state.pokemonDetails.sprites ? this.state.pokemonDetails.sprites.other["official-artwork"].front_default : ""} alt={ this.state.pokemonDetails.name } />
+                    </div>
+                    <div>
+                        <h3>Types: </h3>
+                        {this.state.pokemonDetails.types ? this.state.pokemonDetails.types.map((type) => (
+                            <p key={type.type.name}>{ type.type.name }</p>
+                        )) : "" }
+                    </div>
                 </div>
             </div>
         )
