@@ -13,7 +13,7 @@ export default class Type extends Component {
         return (
             <Link key={id} to={`/types/${id}`} >
                 <div className="card" key={id} onClick={this.props.getTypeDetails.bind(this, id)} >
-                    <h3>{ name }</h3>
+                    <h3 className="capitalize">{ name }</h3>
                 </div>
             </Link>
         )

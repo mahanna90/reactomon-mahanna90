@@ -12,6 +12,10 @@ html,
   position: relative;
 }
 
+html {
+  background-color: #ffe69c;
+}
+
 a {
   color: #333;
   text-decoration: none;
@@ -27,9 +31,34 @@ a {
   margin: 0 20px 110px 20px;
 }
 
+.stats {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+}
+
+.types,
+.abilities {
+  border: 2px solid orange;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  width: 120px;
+  color: #5a9ca4;
+}
+
+.types h3,
+.abilities h3,
+.types p,
+.abilities p {
+  margin: 5px;
+}
+
 .card {
   margin: 20px;
-  border: 2px solid green;
+  border: 2px solid orange;
+  background-color: white;
   padding: 10px;
   display: flex;
   flex-flow: column;
@@ -38,13 +67,25 @@ a {
   height: 200px;
   border-radius: 20px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: #5a9ca4;
+  font-weight: bold;
   cursor: pointer;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card .capitalize,
+.bigcard .capitalize {
+  text-transform: capitalize;
+  margin: 10px;
 }
 
 .bigcard {
   margin: 10px 20px 20px 20px;
   border: 2px solid orange;
+  background-color: white;
   padding: 20px;
   display: flex;
   flex-flow: column;
@@ -106,8 +147,12 @@ h1 {
 .bigcard h1 {
   color: #5a9ca4;
   background-color: white;
-  padding: 10px;
-  font-size: 30px;
+  padding: 10px 20px;
+  font-size: 35px;
+  font-weight: bold;
+  border: 2px solid orange;
+  border-radius: 20px;
+  margin: 5px;
 }
 
 .home {
@@ -120,6 +165,10 @@ img {
   max-width: 1000px;
 }
 
+.card img {
+  width: 150px;
+}
+
 .btn {
   display: inline-block;
   border: 2px solid #f6bd20;
@@ -129,7 +178,7 @@ img {
   cursor: pointer;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
