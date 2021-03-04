@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PokemonCard from './PokemonCard';
-// import PropTypes from 'prop-types';
+import Pagination from './Pagination';
 
 export default class PokemonList extends Component {
 
-    state = {
-        pokemons: []
+    constructor() {
+        super();
+        this.state = {
+            pokemons: [],
+            next: "",
+            previous: "",
+            current: "https://pokeapi.co/api/v2/pokemon/"
+        }
     }
+
+    // state = {
+    //     pokemons: [],
+    //     next: "",
+    //     previous: ""
+    // }
 
 
     setPokemonIds = () => {
@@ -28,9 +40,13 @@ export default class PokemonList extends Component {
         this.setState({pokemons: newData });
     }
 
+    changePage = (src) => {
+        console.log(src);
+    }
+
     componentDidMount() {
-        axios.get('https://pokeapi.co/api/v2/pokemon/')
-          .then(response => this.setState({pokemons: response.data.results}))
+        axios.get(this.state.current)
+          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}))
           .then(this.setPokemonIds);
     
     }
@@ -38,15 +54,15 @@ export default class PokemonList extends Component {
 
     render() {
         return (
-            <div className="container">
-                {this.state.pokemons.map((pokemon) => (
-                <PokemonCard key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />))}
-            </div>)  
+            <>
+                <div className="container pokemonlist">
+                    {this.state.pokemons.map((pokemon) => (
+                    <PokemonCard key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />))}
+                </div>  
+                <Pagination next={this.state.next} previous={this.state.previous} changePage={this.changePage} />
+            </>)
         
     }
 }
 
 
-// PokemonList.propTypes = {
-//     pokemons: PropTypes.array.isRequired
-// }

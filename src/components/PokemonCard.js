@@ -9,10 +9,15 @@ export default class PokemonCard extends Component {
         sprites: []
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const id = this.props.pokemon.id;
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-          .then(response => this.setState({sprites: response.data.sprites}, () => console.log(this.state.sprites)));
+        try {
+            await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+                .then(response => this.setState({sprites: response.data.sprites}));
+        } catch (error) {
+            console.log(error);
+        }
+        
     
     }
     
