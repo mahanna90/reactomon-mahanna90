@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PokemonDetail from './PokemonDetail';
+import PokemonCard from './PokemonCard';
 import PropTypes from 'prop-types';
 
 export default class PokemonList extends Component {
@@ -7,7 +7,7 @@ export default class PokemonList extends Component {
         return (
             <div className="container">
                 {this.props.pokemons.map((pokemon) => (
-                <PokemonDetail key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />))}
+                <PokemonCard key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />))}
             </div>)  
         
     }

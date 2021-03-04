@@ -61,7 +61,7 @@ export default class App extends Component {
       return {...type, id: typeIds[i]};
     });
 
-    this.setState({types: newData });
+    this.setState({types: newData }, () => console.log(this.state));
   }
 
   componentDidMount() {
@@ -71,12 +71,11 @@ export default class App extends Component {
 
     axios.get('https://pokeapi.co/api/v2/type/')
     .then(response => this.setState({types: response.data.results}))
-    .then(this.setTypeIds);;
+    .then(this.setTypeIds);
 
   }
 
   render () {
-    console.log(this.state);
 
     return (
       <Router>
@@ -95,7 +94,7 @@ export default class App extends Component {
           )} />
           <Route exact path="/types" render={(props) => (
             <>
-              <TypeList tpyes={this.state.types} getTypeDetails={this.getTypeDetails} />
+              <TypeList types={this.state.types} getTypeDetails={this.getTypeDetails} />
             </>
           )} />
           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
