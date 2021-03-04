@@ -37,8 +37,21 @@ a {
 
 .pagination {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 130px;
+  position: relative;
+  margin-bottom: 170px;
+  width: 50%;
+}
+
+.btn.prev {
+  position: absolute;
+  left: 150px;
+  top: 0;
+}
+
+.btn.next {
+  position: absolute;
+  right: 150px;
+  top: 0;
 }
 
 .stats {

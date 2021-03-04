@@ -5,21 +5,22 @@ import Pagination from './Pagination';
 
 export default class PokemonList extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            pokemons: [],
-            next: "",
-            previous: "",
-            current: "https://pokeapi.co/api/v2/pokemon/"
-        }
-    }
-
-    // state = {
-    //     pokemons: [],
-    //     next: "",
-    //     previous: ""
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         pokemons: [],
+    //         next: "",
+    //         previous: "",
+    //         current: "https://pokeapi.co/api/v2/pokemon/"
+    //     }
     // }
+
+    state = {
+        pokemons: [],
+        next: "",
+        previous: "",
+        current: "https://pokeapi.co/api/v2/pokemon/"
+    }
 
 
     setPokemonIds = () => {
@@ -42,13 +43,33 @@ export default class PokemonList extends Component {
 
     changePage = (src) => {
         console.log(src);
+        if (src.next || src.previous) {
+            if (src.next) {
+                this.setState({current: src.next }, () => console.log(this.state));
+            } else if (src.previous) {
+                this.setState({current: src.previous }, () => console.log(this.state));
+            }
+            // this.componentDidMount();
+            // this.refreshPage();
+            // this.setPokemons();
+        }
     }
+
+    // refreshPage = () => {
+    //     window.location.reload(false);
+    // }
 
     componentDidMount() {
         axios.get(this.state.current)
-          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}))
+          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}, () => console.log("running componentMount")))
           .then(this.setPokemonIds);
     
+    }
+
+    setPokemons = () => {
+        axios.get(this.state.current)
+          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}, () => console.log("running setPokemons")))
+          .then(this.setPokemonIds);
     }
 
 

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 
 export default class Pagination extends Component {
     
@@ -11,22 +9,12 @@ export default class Pagination extends Component {
 
         return (
             <div className="pagination" >
-                {/* {this.props.previous ? 
-                <Link to={this.props.previous} className="btn">Previous</Link> : ""}
-                {this.props.next ?
-                <Link to={this.props.next} className="btn">Next</Link> : ""} */}
-
                 {this.props.previous ? 
-                <button className="btn" onClick={this.props.changePage.bind(this, src)} >Previous</button> : ""}
+                <button className="btn prev" onClick={this.props.changePage.bind(this, src)} >Prev</button> : ""}
                 {this.props.next ?
-                <button className="btn" onClick={this.props.changePage.bind(this, src)} >Next</button> : ""}
-                
+                <button className="btn next" onClick={this.props.changePage.bind(this, src)} >Next</button> : ""} 
             </div>
         )
     }
 }
 
-// Pagination.propTypes = {
-//     next: PropTypes.object.isRequired,
-//     previous: PropTypes.object.isRequired
-// }

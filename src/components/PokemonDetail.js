@@ -15,7 +15,6 @@ export default class PokemonDetail extends Component {
     }
 
     componentDidMount() {
-        console.log("running componentDidMount");
         const id = this.getPokemonId();
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
           .then(response => this.setState({pokemonDetails: response.data}));
@@ -23,7 +22,6 @@ export default class PokemonDetail extends Component {
     }
 
     render() {
-        console.log("running render");
         
         return (
             <div className="container">
