@@ -11,6 +11,7 @@ import About from './components/About';
 import PokemonDetail from './components/PokemonDetail';
 import Home from './components/Home';
 import Footer from './components/layouts/Footer';
+import CatchedPokemons from './components/CatchedPokemons';
 // import TypeDetail from './components/TypeDetail';
 
 
@@ -46,6 +47,11 @@ export default class App extends Component {
           <Route exact path="/types" render={(props) => (
             <>
               <TypeList getTypeDetails={this.getTypeDetails} />
+            </>
+          )} />
+          <Route exact path="/catched" render={(props) => (
+            <>
+              <CatchedPokemons />
             </>
           )} />
           <Route exact path="/pokemons/:id" render={(props) => (

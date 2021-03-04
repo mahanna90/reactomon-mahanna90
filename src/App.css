@@ -14,6 +14,7 @@ html,
 
 html {
   background-color: #ffe69c;
+  position: relative;
 }
 
 a {
@@ -125,6 +126,18 @@ a {
   margin: 20px;
 }
 
+.catched {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  width: 100%;
+}
+
+.pikachupic img {
+  max-width: 300px;
+  margin: 10px;
+}
+
 .App-header,
 header {
   background-color: #5a9ca4;
@@ -135,12 +148,26 @@ header {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   border: 2px solid #f6bd20;
+  position: relative;
 }
 
 .App-header img {
   width: 100%;
   max-width: 600px;
-  display: flex;
+}
+
+.headerpika {
+  position: absolute;
+  left: -350px;
+  max-width: 250px;
+  margin: 20px;
+}
+
+.bulbasaur {
+  position: absolute;
+  right: -350px;
+  max-width: 250px;
+  margin: 20px;
 }
 
 footer {

@@ -9,6 +9,7 @@ export default class NavBar extends Component {
                 <Link to="/pokemons" className="btn" >Pokemons</Link> 
                 <Link to="/types" className="btn" >Types</Link>
                 <Link to="/about" className="btn" >About</Link>
+                <Link to="/catched" className="btn" >Catched</Link>
             </div>
         )
     }
