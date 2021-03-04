@@ -11,6 +11,7 @@ import About from './components/About';
 import PokemonDetail from './components/PokemonDetail';
 import Home from './components/Home';
 import Footer from './components/layouts/Footer';
+// import TypeDetail from './components/TypeDetail';
 
 
 export default class App extends Component {
@@ -52,11 +53,11 @@ export default class App extends Component {
               <PokemonDetail />
             </>
           )} />
-          <Route exact path="/types/:id" render={(props) => (
+          {/* <Route exact path="/types/:id" render={(props) => (
             <>
-              <h1>Type details page</h1>
+              <TypeDetail />
             </>
-          )} />
+          )} /> */}
 
           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
           <Route exact path="/about" component={About} />     
