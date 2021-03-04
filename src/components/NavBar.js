@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class NavBar extends Component {
     render() {
         return (
-            <div>
+            <div className="navbar" >
                 <Link to="/" className="btn" >Home</Link>
                 <Link to="/pokemons" className="btn" >Pokemons</Link> 
                 <Link to="/types" className="btn" >Types</Link>

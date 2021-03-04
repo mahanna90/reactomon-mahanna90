@@ -11,8 +11,8 @@ export default class Type extends Component {
         const { name, id } = this.props.type;
 
         return (
-            <Link to={`/types/${id}`} key={id}>
-                <div className="card" onClick={this.props.getTypeDetails.bind(this, id)} >
+            <Link key={id} to={`/types/${id}`} >
+                <div className="card" key={id} onClick={this.props.getTypeDetails.bind(this, id)} >
                     <h3>{ name }</h3>
                 </div>
             </Link>
