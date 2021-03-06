@@ -43,7 +43,8 @@ const PokemonList = () => {
             setPokemons(pokemons => pokemons.map((pokemon) => {
                 const pokemonId = getPokemonIdFromUrl(pokemon.url);
                 return {...pokemon, id: pokemonId}}))
-            });
+            })
+            .catch((error) => console.log(error));
         }
 
         fetchPokemons();     

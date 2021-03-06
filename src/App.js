@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import { v4 as uuidv4 } from 'uuid';
-// import axios from 'axios';
 import './App.css';
 import Header from './components/layouts/Header';
 import PokemonList from './components/PokemonList';
@@ -12,17 +10,11 @@ import PokemonDetail from './components/PokemonDetail';
 import Home from './components/Home';
 import Footer from './components/layouts/Footer';
 import CatchedPokemons from './components/CatchedPokemons';
-// import TypeDetail from './components/TypeDetail';
 
 
-export default class App extends Component {
-
-
-
-  render () {
-
-    return (
-      <Router>
+const App = () => {
+  return (
+    <Router>
         <div className="App">
           <Header />
           <NavBar />
@@ -38,7 +30,7 @@ export default class App extends Component {
           )} />
           <Route exact path="/types" render={(props) => (
             <>
-              <TypeList getTypeDetails={this.getTypeDetails} />
+              <TypeList />
             </>
           )} />
           <Route exact path="/catched" render={(props) => (
@@ -62,7 +54,60 @@ export default class App extends Component {
           <Footer />
         </div>
       </Router>
-    );
-  }
+  )
 }
+
+export default App
+
+
+
+
+// export default class App extends Component {
+
+//   render () {
+
+//     return (
+//       <Router>
+//         <div className="App">
+//           <Header />
+//           <NavBar />
+//           <Route exact path="/" render={(props) => (
+//             <>
+//               <Home />
+//             </>
+//           )} />
+//           <Route exact path="/pokemons" render={(props) => (
+//             <>
+//               <PokemonList />
+//             </>
+//           )} />
+//           <Route exact path="/types" render={(props) => (
+//             <>
+//               <TypeList getTypeDetails={this.getTypeDetails} />
+//             </>
+//           )} />
+//           <Route exact path="/catched" render={(props) => (
+//             <>
+//               <CatchedPokemons />
+//             </>
+//           )} />
+//           <Route exact path="/pokemons/:id" render={(props) => (
+//             <>
+//               <PokemonDetail />
+//             </>
+//           )} />
+//           {/* <Route exact path="/types/:id" render={(props) => (
+//             <>
+//               <TypeDetail />
+//             </>
+//           )} /> */}
+
+//           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
+//           <Route exact path="/about" component={About} />     
+//           <Footer />
+//         </div>
+//       </Router>
+//     );
+//   }
+// }
 
