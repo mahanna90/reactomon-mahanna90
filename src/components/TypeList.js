@@ -44,7 +44,6 @@ const TypeList = () => {
 
     return (
         <div className="container">
-            { console.log(types) }
             {types.map((type, i) => (
                 <Type key={i} type={type} /> ))}
         </div>
