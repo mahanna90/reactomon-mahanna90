@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-// import title from '../images/download.png';
+import React from 'react';
 
-export default class Home extends Component {
-    render() {
-        return (
-            <>
+const Home = () => {
+    return (
+        <>
             {/* <div className="home" >
                 <img src={title} alt="pikachu_title_image" />
             </div> */}
-            </>
-        )
-    }
+        </>
+    )
 }
 
+export default Home;
