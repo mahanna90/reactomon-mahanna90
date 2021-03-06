@@ -18,14 +18,6 @@ import CatchedPokemons from './components/CatchedPokemons';
 export default class App extends Component {
 
 
-  getPokemonDetails = (id) => {
-    console.log(`clicked on pokemon: ${id}`);
-  }
-
-  getTypeDetails = (id) => {
-    console.log(`clicked on type: ${id}`);
-  }
-
 
   render () {
 
@@ -41,7 +33,7 @@ export default class App extends Component {
           )} />
           <Route exact path="/pokemons" render={(props) => (
             <>
-              <PokemonList getPokemonDetails={this.getPokemonDetails} />
+              <PokemonList />
             </>
           )} />
           <Route exact path="/types" render={(props) => (

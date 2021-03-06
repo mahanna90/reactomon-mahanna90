@@ -1,14 +1,12 @@
 // import React, { Component } from 'react';
 import React from 'react';
 
-const Pagination = ({next, previous, changePage}) => {
-
-    const src = {previous: previous, next: next};
+const Pagination = ({goToNextPage, goToPrevPage}) => {
 
     return (
         <div className="pagination" >
-            {previous && <button className="btn prev" onClick={changePage.bind(this, src)} >Prev</button> }
-            {next && <button className="btn next" onClick={changePage.bind(this, src)} >Next</button>} 
+            {goToPrevPage && <button className="btn prev" onClick={goToPrevPage} >Prev</button> }
+            {goToNextPage && <button className="btn next" onClick={goToNextPage} >Next</button>} 
         </div>
     )
 }
