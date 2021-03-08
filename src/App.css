@@ -29,11 +29,11 @@ a {
   align-items: center;
   justify-content: center;
   flex: 0 auto;
-  margin: 0 20px 110px 20px;
+  margin-bottom: 110px;
 }
 
 .container.pokemonlist {
-  margin: 0 20px 20px 20px;
+  margin-bottom: 20px;
 }
 
 .pagination {

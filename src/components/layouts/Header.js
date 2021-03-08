@@ -6,15 +6,17 @@ import bulbasaur from '../../images/Bulbasaur.png';
 const Header = () => {
   return (
     <>
-      <div className="headerpika">
-        <img src={pikachu} alt="pikachu_with_ball" />
-      </div>
+      
       <header className="App-header">
-        <img src={title} alt="pikachu_title_image" />
+        <div className="headerpika">
+          <img src={pikachu} alt="pikachu_with_ball" />
+        </div>
+          <img src={title} alt="pikachu_title_image" />
+          <div className="bulbasaur">
+          <img src={bulbasaur} alt="bulbasaur" />
+        </div>
       </header>
-      <div className="bulbasaur">
-        <img src={bulbasaur} alt="bulbasaur" />
-      </div>
+      
     </>
   )
 }
