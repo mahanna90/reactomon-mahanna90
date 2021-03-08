@@ -10,9 +10,6 @@ const Home = () => {
     return (
         <>
             <Image src={Pikachu} alt="pikachu" />
-            <div className="home" >
-                
-            </div>
         </>
     )
 }
