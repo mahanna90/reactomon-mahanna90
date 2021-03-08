@@ -12,6 +12,7 @@ import Footer from './components/layouts/Footer';
 import CatchedPokemons from './components/CatchedPokemons';
 import {PokemonProvider} from './context/PokemonContext';
 import {TypeProvider} from './context/TypeContext';
+import TypeDetail from './components/TypeDetail';
 
 
 const App = () => {
@@ -47,14 +48,14 @@ const App = () => {
                   <PokemonDetail />
                 </>
               )} />
+              <Route exact path="/types/:id" render={(props) => (
+                <>
+                  <TypeDetail />
+                </>
+              )} />
             </TypeProvider>
           </PokemonProvider>
 
-          {/* <Route exact path="/types/:id" render={(props) => (
-            <>
-              <TypeDetail />
-            </>
-          )} /> */}
           {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
           <Route exact path="/about" component={About} />     
           <Footer />
