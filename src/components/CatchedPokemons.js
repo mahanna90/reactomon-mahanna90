@@ -10,8 +10,8 @@ const CatchedPokemons = () => {
 
     const Pikachu = styled.div`
         max-width: 300px;
-        margin: 30px;
-        float: left;
+        margin: 50px 10px;
+
     `;
 
     const Catched = styled.div`
@@ -19,6 +19,7 @@ const CatchedPokemons = () => {
         justify-content: space-evenly;
         margin-bottom: 110px;
         max-width: 70%;
+        flex: 0 auto;
     `;
 
     return (
