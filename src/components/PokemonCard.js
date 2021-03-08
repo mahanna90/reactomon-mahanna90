@@ -13,12 +13,9 @@ const PokemonCard = ({ pokemon }) => {
 
     useEffect(() => {
         setIsLoading(true);
-        let cancel;
 
         const fetchPokemon = async () => {
-            await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`, {
-                cancelToken: new axios.CancelToken(c => cancel = c)
-            })
+            await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}/`)
                 .then(response => {
                     setIsLoading(false);
                     setSprites(response.data.sprites);
@@ -28,12 +25,10 @@ const PokemonCard = ({ pokemon }) => {
 
         fetchPokemon();
 
-        return () => cancel("Cancelling previous fetch request...")
-
     } , [pokemon])
 
     if (isLoading) return "Content is loading...";
-    
+
     return (
         <Link to={`/pokemons/${pokemon.id}`} key={pokemon.id} >
             <div className="card" key={pokemon.id} >
@@ -63,10 +58,10 @@ export default PokemonCard;
 //         } catch (error) {
 //             console.log(error);
 //         }
-        
-    
+
+
 //     }
-    
+
 //     render() {
 //         const { name, id } = this.props.pokemon;
 

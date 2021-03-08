@@ -35,14 +35,12 @@ const PokemonList = () => {
             })
             .then(response => {
             setIsLoading(false);
-            setPokemons(response.data.results);
+            setPokemons(response.data.results.map((pokemon) => {
+                const pokemonId = getPokemonIdFromUrl(pokemon.url);
+                return {...pokemon, id: pokemonId}}));
+           
             setNextPage(response.data.next);
             setPrevPage(response.data.previous);
-            })
-            .then(() => {
-            setPokemons(pokemons => pokemons.map((pokemon) => {
-                const pokemonId = getPokemonIdFromUrl(pokemon.url);
-                return {...pokemon, id: pokemonId}}))
             })
             .catch((error) => console.log(error));
         }
