@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Footer from './components/layouts/Footer';
 import CatchedPokemons from './components/CatchedPokemons';
 import {PokemonProvider} from './context/PokemonContext';
+import {TypeProvider} from './context/TypeContext';
 
 
 const App = () => {
@@ -20,33 +21,35 @@ const App = () => {
           <Header />
           <NavBar />
           <PokemonProvider>
-            <Route exact path="/" render={(props) => (
-              <>
-                <Home />
-              </>
-            )} />
-            <Route exact path="/pokemons" render={(props) => (
-              <>
-                <PokemonList />
-              </>
-            )} />
-            <Route exact path="/types" render={(props) => (
-              <>
-                <TypeList />
-              </>
-            )} />
-            <Route exact path="/catched" render={(props) => (
-              <>
-                <CatchedPokemons />
-              </>
-            )} />
-            <Route exact path="/pokemons/:id" render={(props) => (
-              <>
-                <PokemonDetail />
-              </>
-            )} />
+            <TypeProvider>
+              <Route exact path="/" render={(props) => (
+                <>
+                  <Home />
+                </>
+              )} />
+              <Route exact path="/pokemons" render={(props) => (
+                <>
+                  <PokemonList />
+                </>
+              )} />
+              <Route exact path="/types" render={(props) => (
+                <>
+                  <TypeList />
+                </>
+              )} />
+              <Route exact path="/catched" render={(props) => (
+                <>
+                  <CatchedPokemons />
+                </>
+              )} />
+              <Route exact path="/pokemons/:id" render={(props) => (
+                <>
+                  <PokemonDetail />
+                </>
+              )} />
+            </TypeProvider>
           </PokemonProvider>
-          
+
           {/* <Route exact path="/types/:id" render={(props) => (
             <>
               <TypeDetail />
