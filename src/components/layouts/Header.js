@@ -35,7 +35,8 @@ const PokeBall = styled.div`
     max-width: 200px;
     transition: all .2s ease-in-out; 
     cursor: pointer;
-    background: none;
+    /* background: none; */
+    background: rgba(0, 0, 0, 0.0);
     &:hover {
       transform: scale(1.1); 
     } 
