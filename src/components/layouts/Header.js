@@ -74,7 +74,7 @@ const Header = () => {
           <img src={togepi} alt="togepi" />
         </Togepi>
         <PokeBall draggable="true" onDragStart={dragStart} onDragEnd={dragEnd}>
-          <img src={ClosedBall} alt="ball" />
+          <img src={ClosedBall} alt="ball"  style={{background: "none"}} />
         </PokeBall>
       </header>
       

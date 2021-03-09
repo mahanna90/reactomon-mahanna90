@@ -58,8 +58,8 @@ const PokemonList = () => {
     return (
         <>
             <div className="container pokemonlist">
-                {pokemons.map((pokemon, i) => (
-                <PokemonCard key={i} pokemon={pokemon} fromCatched={false} />))}
+                {pokemons.map((pokemon) => (
+                <PokemonCard key={pokemon.id} pokemon={pokemon} fromCatched={false} />))}
             </div>  
             <Pagination goToNextPage={nextPage ? goToNextPage : null} goToPrevPage={prevPage ? goToPrevPage : null} />
         </>
