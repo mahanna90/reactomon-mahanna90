@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import Picture from '../images/pikachu.png';
-import {CatchedContext} from '../context/CatchedContext';
+import {CatchContext} from '../context/CatchContext';
 import PokemonCard from './PokemonCard';
 import styled from 'styled-components';
 
-const CatchedPokemons = () => {
+const CaughtPokemons = () => {
 
-    const [catched, setCatched] = useContext(CatchedContext);
+    const [caught, setCaught] = useContext(CatchContext);
 
     const Pikachu = styled.div`
         max-width: 300px;
@@ -28,11 +28,11 @@ const CatchedPokemons = () => {
                 <img src={Picture} alt="pikachu_in_ball" />
             </Pikachu>
             <div className="container pokemonlist">
-                {catched.map((pokemon, i) => (
-                <PokemonCard key={i} pokemon={pokemon} fromCatched={true} />))}
+                {caught.map((pokemon, i) => (
+                <PokemonCard key={i} pokemon={pokemon} fromCaught={true} />))}
             </div>
         </Catched>
     )
 }
 
-export default CatchedPokemons;
+export default CaughtPokemons;

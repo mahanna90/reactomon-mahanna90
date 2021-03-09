@@ -9,11 +9,11 @@ import About from './components/About';
 import PokemonDetail from './components/PokemonDetail';
 import Home from './components/Home';
 import Footer from './components/layouts/Footer';
-import CatchedPokemons from './components/CatchedPokemons';
+import CaughtPokemons from './components/CaughtPokemons';
 import {PokemonProvider} from './context/PokemonContext';
 import {TypeProvider} from './context/TypeContext';
 import {DragProvider} from './context/DragContext';
-import {CatchedProvider} from './context/CatchedContext';
+import {CatchProvider} from './context/CatchContext';
 import TypeDetail from './components/TypeDetail';
 
 
@@ -22,7 +22,7 @@ const App = () => {
     <Router>
         <div className="App">
           <DragProvider>
-            <CatchedProvider>
+            <CatchProvider>
             <Header />
             <NavBar />
             <PokemonProvider>
@@ -44,7 +44,7 @@ const App = () => {
                 )} />
                 <Route exact path="/catched" render={(props) => (
                   <>
-                    <CatchedPokemons />
+                    <CaughtPokemons />
                   </>
                 )} />
                 <Route exact path="/pokemons/:id" render={(props) => (
@@ -63,7 +63,7 @@ const App = () => {
             {/* <Route exact path="/pokemons/:id" children={<PokemonDetail />} /> */}
             <Route exact path="/about" component={About} />     
             <Footer />
-          </CatchedProvider>
+          </CatchProvider>
           </DragProvider>
         </div>
       </Router>

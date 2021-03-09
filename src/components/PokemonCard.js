@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ballIcon from '../images/iconsmall.png';
-import {CatchedContext} from '../context/CatchedContext';
+import {CatchContext} from '../context/CatchContext';
 
 
-const PokemonCard = ({ pokemon, fromCatched }) => {
+const PokemonCard = ({ pokemon, fromCaught }) => {
 
     const [sprites, setSprites] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [isCatched, setIsCatched] = useState(false);
+    const [isCaught, setIsCaught] = useState(false);
 
-    const [catched, setCatched] = useContext(CatchedContext);
+    const [caught, setCaught] = useContext(CatchContext);
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,7 +23,7 @@ const PokemonCard = ({ pokemon, fromCatched }) => {
                     setSprites(response.data.sprites);
                     const result = checkCatched();
                     if (result) {
-                        setIsCatched(true);
+                        setIsCaught(true);
                     }
                 })
                 .catch((error) => console.log(error))
@@ -40,10 +40,8 @@ const PokemonCard = ({ pokemon, fromCatched }) => {
 
     const drop = (e) => {
         e.preventDefault();
-        const pokemonId = e.currentTarget.id;
-
-        setIsCatched(true);
-        setCatched([...catched, pokemon])
+        setIsCaught(true);
+        setCaught([...caught, pokemon])
     }
 
     const dragEnter = (e) => {
@@ -56,7 +54,7 @@ const PokemonCard = ({ pokemon, fromCatched }) => {
     }
 
     const checkCatched = () => {
-        const filtered = catched.filter(catchedPokemon => catchedPokemon.id === pokemon.id);
+        const filtered = caught.filter(caughtPokemon => caughtPokemon.id === pokemon.id);
         return filtered.length > 0 ? true : false;
     }
 
@@ -65,11 +63,11 @@ const PokemonCard = ({ pokemon, fromCatched }) => {
     return (
         <Link to={`/pokemons/${pokemon.id}`} key={pokemon.id} >
             <div className="card pokemon" key={pokemon.id} id={pokemon.id} 
-                onDragOver={!fromCatched && !isCatched ? dragOver : null} 
-                onDragEnter={!fromCatched && !isCatched ? dragEnter: null} 
-                onDragLeave={!fromCatched && !isCatched ? dragLeave : null} 
-                onDrop={!fromCatched && !isCatched ? drop : null}>
-            <img src={isCatched && !fromCatched ? ballIcon : sprites ? sprites["front_default"] : ""} alt={ pokemon.name } />
+                onDragOver={!fromCaught && !isCaught ? dragOver : null} 
+                onDragEnter={!fromCaught && !isCaught ? dragEnter: null} 
+                onDragLeave={!fromCaught && !isCaught ? dragLeave : null} 
+                onDrop={!fromCaught && !isCaught ? drop : null}>
+            <img src={isCaught && !fromCaught ? ballIcon : sprites ? sprites["front_default"] : ""} alt={ pokemon.name } />
             <h3 className="capitalize">{ pokemon.name }</h3>
             </div>
         </Link>
