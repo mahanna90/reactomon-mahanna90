@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
-// import title from '../images/download.png';
+import React from 'react';
+import styled from 'styled-components';
+import Pikachu from '../images/byebye.png';
 
-export default class Home extends Component {
-    render() {
-        return (
-            <>
-            {/* <div className="home" >
-                <img src={title} alt="pikachu_title_image" />
-            </div> */}
-            </>
-        )
-    }
+const Image = styled.img`
+    max-width: 350px;
+`;
+
+const Home = () => {
+    return (
+        <>
+            <Image src={Pikachu} alt="pikachu" />
+        </>
+    )
 }
 
+export default Home;

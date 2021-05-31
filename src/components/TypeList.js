@@ -1,55 +1,53 @@
-import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+// import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Type from './Type';
+import {TypeContext} from '../context/TypeContext';
 
-export default class TypeList extends Component {
+const TypeList = () => {
 
-    state = {
-        types: []
+    const [types, setTypes] = useContext(TypeContext);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    const getTypeIdFromUrl = (url) => {
+        const urlParts = url.split("/");
+        return urlParts[urlParts.length-2];
     }
 
-    setTypeIds = () => {
-        let urlParts = [];
-        let currentUrl = "";
-        let typeIds = [];
-        this.state.types.map((type) => {
-          currentUrl = type.url;
-          urlParts = currentUrl.split("/");
-          typeIds.push(urlParts[urlParts.length-2]);
-          return type;
-        });
-    
-        const newData = this.state.types.map((type, i) => {
-          return {...type, id: typeIds[i]};
-        });
-    
-        // this.setState({types: newData }, () => console.log(this.state));
-        this.setState({types: newData });
-    }
+    useEffect(() => {
+        setIsLoading(true);
+        let cancel;
 
-    componentDidMount() {
-        axios.get('https://pokeapi.co/api/v2/type/')
-        .then(response => this.setState({types: response.data.results}))
-        .then(this.setTypeIds);
-    }
-
-    render() {
-
-        if (this.state.types == null) {
-            return null;
+        const fetchTypes = async () => {
+            await axios.get('https://pokeapi.co/api/v2/type/', {
+                cancelToken: new axios.CancelToken(c => cancel = c)
+            })
+            .then(response => {
+                setIsLoading(false);
+                setTypes(response.data.results.map((type) => {
+                    const typeId = getTypeIdFromUrl(type.url);
+                    return {...type, id: typeId}
+                }));
+            })
+            .catch((error) => console.log(error));
         }
 
-        return (
-            <div className="container">
-                {this.state.types.map((type) => (
-                    <Type key={type.id} type={type} getTypeDetails={this.props.getTypeDetails} />
-                    ))}
-            </div>)
-    }
+        fetchTypes();     
+
+        return () => cancel()
+
+    }, [])
+
+
+    if (isLoading) return "Content is loading...";
+
+    return (
+        <div className="container">
+            {types.map((type, i) => (
+                <Type key={i} type={type} /> ))}
+        </div>
+    )
 }
 
-// TypeList.propTypes = {
-//     types: PropTypes.array.isRequired
-// }
-
+export default TypeList

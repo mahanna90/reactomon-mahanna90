@@ -1,4 +1,65 @@
-# Getting Started with Create React App
+# Reactomon
+
+## 1. About the project
+
+Reactomon is a simple React frontend SPA without backend.
+The purpose of the project is to learn React in a fun way.
+The theme of the app is Pokemon and I use axios to fetch data from the PokeAPI (https://pokeapi.co/docs/v2).
+
+- I use StyledComponents for styling
+- I use axios for fetching data from API
+- I use React context for persisting user data through pages
+- I use drag n drop to "catch" pokemons
+
+### Main features
+
+#### 1. Main page
+Contains a header with navbar and a draggable pokeball in the top right corner.
+
+![home](src/images/main_page.png)
+
+#### 2. Pokemons page
+Also contains the navbar and a list of all the pokemon cards fetched from the PokeAPI.
+There are 20 pokemon cars in one page and pagination is implemented.
+Cards' size grows when the ball is dragged over.
+
+![home](src/images/pokemon_list.png)
+
+
+#### 3. Pokemon details
+When clicking on a pokemon card, we can check the pokemon details on a bigger card.
+
+![home](src/images/pokemon_card.png)
+
+
+#### 4. Types page
+On types page all the pokemon types are listed which are available on the api
+
+![home](src/images/type_list.png)
+
+#### 5. Pokemons listed by type
+When clicking on a type on types page all the pokemons are listed which belong to that type.
+
+![home](src/images/pokemons_by_type.png)
+
+#### 6. Catching pokemons
+On both the pokemons page and the pokemons list by type page we can drag the pokeball over the pokemon cards to catch a pokemon.
+When the ball is dropped on a card, the picture changes to a closed pokeball.
+
+![home](src/images/catch_pokemons.png)
+
+#### 7. Caught pokemons
+On the caught page we can se all the pokemons which we have caught already.
+
+![home](src/images/caught_pokemons.png)
+
+
+As this is an SPA without a backend and database, all the action is on the client side and data is only saved into the React context.
+Therefore, when the page is refreshed, everything defaults back to the original state.
+
+
+
+## 2. Guide to setting up a React app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

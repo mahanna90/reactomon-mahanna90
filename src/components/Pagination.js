@@ -1,20 +1,38 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React from 'react';
 
-export default class Pagination extends Component {
+const Pagination = ({goToNextPage, goToPrevPage}) => {
+
+    return (
+        <div className="pagination" >
+            {goToPrevPage && <button className="btn prev" onClick={goToPrevPage} >Prev</button> }
+            {goToNextPage && <button className="btn next" onClick={goToNextPage} >Next</button>} 
+        </div>
+    )
+}
+
+export default Pagination;
+
+
+// export default class Pagination extends Component {
     
 
-    render() {
+//     render() {
 
-        const src = {previous: this.props.previous, next: this.props.next};
+//         const src = {previous: this.props.previous, next: this.props.next};
 
-        return (
-            <div className="pagination" >
-                {this.props.previous ? 
-                <button className="btn prev" onClick={this.props.changePage.bind(this, src)} >Prev</button> : ""}
-                {this.props.next ?
-                <button className="btn next" onClick={this.props.changePage.bind(this, src)} >Next</button> : ""} 
-            </div>
-        )
-    }
-}
+//         return (
+//             <div className="pagination" >
+//                 {this.props.previous ? 
+//                 <button className="btn prev" onClick={this.props.changePage.bind(this, src)} >Prev</button> : ""}
+//                 {this.props.next ?
+//                 <button className="btn next" onClick={this.props.changePage.bind(this, src)} >Next</button> : ""} 
+//             </div>
+//         )
+//     }
+// }
+
+
+
+
 

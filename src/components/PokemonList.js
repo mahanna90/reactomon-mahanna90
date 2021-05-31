@@ -1,89 +1,69 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import PokemonCard from './PokemonCard';
 import Pagination from './Pagination';
+import {PokemonContext} from '../context/PokemonContext';
 
-export default class PokemonList extends Component {
+const PokemonList = () => {
 
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         pokemons: [],
-    //         next: "",
-    //         previous: "",
-    //         current: "https://pokeapi.co/api/v2/pokemon/"
-    //     }
-    // }
+    const [pokemons, setPokemons] = useContext(PokemonContext);
 
-    state = {
-        pokemons: [],
-        next: "",
-        previous: "",
-        current: "https://pokeapi.co/api/v2/pokemon/"
+    const [nextPage, setNextPage] = useState("");
+    const [prevPage, setPrevPage] = useState("");
+    const [currentPage, setCurrentPage] = useState("https://pokeapi.co/api/v2/pokemon/");
+    const [isLoading, setIsLoading] = useState(true);
+
+    
+    const getPokemonIdFromUrl= (url) => {
+        const urlParts = url.split("/");
+        return urlParts[urlParts.length-2];
     }
 
-
-    setPokemonIds = () => {
-        let urlParts = [];
-        let currentUrl = "";
-        let pokemonIds = [];
-        this.state.pokemons.map((pokemon) => {
-          currentUrl = pokemon.url;
-          urlParts = currentUrl.split("/");
-          pokemonIds.push(urlParts[urlParts.length-2]);
-          return pokemon;
-        });
-    
-        const newData = this.state.pokemons.map((pokemon, i) => {
-          return {...pokemon, id: pokemonIds[i]};
-        });
-    
-        this.setState({pokemons: newData });
+    const goToNextPage = () => {
+        setCurrentPage(nextPage)
     }
 
-    changePage = (src) => {
-        console.log(src);
-        if (src.next || src.previous) {
-            if (src.next) {
-                this.setState({current: src.next }, () => console.log(this.state));
-            } else if (src.previous) {
-                this.setState({current: src.previous }, () => console.log(this.state));
-            }
-            // this.componentDidMount();
-            // this.refreshPage();
-            // this.setPokemons();
+    const goToPrevPage = () => {
+        setCurrentPage(prevPage)
+    }
+
+    useEffect(() => {
+        setIsLoading(true);
+        let cancel;
+
+        const fetchPokemons = async () => {
+            await axios.get(currentPage, {
+                cancelToken: new axios.CancelToken(c => cancel = c)
+            })
+            .then(response => {
+            setIsLoading(false);
+            setPokemons(response.data.results.map((pokemon) => {
+                const pokemonId = getPokemonIdFromUrl(pokemon.url);
+                return {...pokemon, id: pokemonId}}));
+           
+            setNextPage(response.data.next);
+            setPrevPage(response.data.previous);
+            })
+            .catch((error) => console.log(error));
         }
-    }
 
-    // refreshPage = () => {
-    //     window.location.reload(false);
-    // }
+        fetchPokemons();     
 
-    componentDidMount() {
-        axios.get(this.state.current)
-          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}, () => console.log("running componentMount")))
-          .then(this.setPokemonIds);
-    
-    }
+        return () => cancel()
 
-    setPokemons = () => {
-        axios.get(this.state.current)
-          .then(response => this.setState({pokemons: response.data.results, next: response.data.next, previous: response.data.previous}, () => console.log("running setPokemons")))
-          .then(this.setPokemonIds);
-    }
+    }, [currentPage])
 
+    if (isLoading) return "Content is loading...";
 
-    render() {
-        return (
-            <>
-                <div className="container pokemonlist">
-                    {this.state.pokemons.map((pokemon) => (
-                    <PokemonCard key={pokemon.id} pokemon={pokemon} getPokemonDetails={this.props.getPokemonDetails} />))}
-                </div>  
-                <Pagination next={this.state.next} previous={this.state.previous} changePage={this.changePage} />
-            </>)
-        
-    }
+    return (
+        <>
+            <div className="container pokemonlist">
+                {pokemons.map((pokemon) => (
+                <PokemonCard key={pokemon.id} pokemon={pokemon} fromCaught={false} />))}
+            </div>  
+            <Pagination goToNextPage={nextPage ? goToNextPage : null} goToPrevPage={prevPage ? goToPrevPage : null} />
+        </>
+    )
 }
 
-
+export default PokemonList;

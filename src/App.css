@@ -29,11 +29,11 @@ a {
   align-items: center;
   justify-content: center;
   flex: 0 auto;
-  margin: 0 20px 110px 20px;
+  margin-bottom: 110px;
 }
 
 .container.pokemonlist {
-  margin: 0 20px 20px 20px;
+  margin-bottom: 20px;
 }
 
 .pagination {
@@ -97,7 +97,12 @@ a {
   color: #5a9ca4;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card.pokemon.hovered {
+  transform: scale(1.1);
 }
 
 .card .capitalize,
@@ -126,18 +131,6 @@ a {
   margin: 20px;
 }
 
-.catched {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-  width: 100%;
-}
-
-.pikachupic img {
-  max-width: 300px;
-  margin: 10px;
-}
-
 .App-header,
 header {
   background-color: #5a9ca4;
@@ -154,20 +147,6 @@ header {
 .App-header img {
   width: 100%;
   max-width: 600px;
-}
-
-.headerpika {
-  position: absolute;
-  left: -350px;
-  max-width: 250px;
-  margin: 20px;
-}
-
-.bulbasaur {
-  position: absolute;
-  right: -350px;
-  max-width: 250px;
-  margin: 20px;
 }
 
 footer {
