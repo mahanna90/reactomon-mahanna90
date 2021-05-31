@@ -74,8 +74,8 @@ const Header = () => {
         <Togepi>
           <img src={togepi} alt="togepi" />
         </Togepi>
-        <PokeBall draggable="true" onDragStart={dragStart} onDragEnd={dragEnd}>
-          <img src={ClosedBall} alt="ball"  style={{background: "none"}} />
+        <PokeBall draggable="true" onDragStart={dragStart} onDragEnd={dragEnd} style={{userSelect:"none", background: "transparent"}}>
+          <img src={ClosedBall} alt="ball"  style={{userSelect:"none", pointerEvents: "none", background: "transparent"}} />
         </PokeBall>
       </header>
       
