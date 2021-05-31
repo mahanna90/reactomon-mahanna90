@@ -7,7 +7,7 @@ The purpose of the project is to learn React in a fun way.
 The theme of the app is Pokemon and I use axios to fetch data from the PokeAPI (https://pokeapi.co/docs/v2).
 
 - I use StyledComponents for styling
-- I use axios for fetching data from API
+- I use axios for fetching data from the API
 - I use React context for persisting user data through pages
 - I use drag n drop to "catch" pokemons
 
@@ -19,8 +19,8 @@ Contains a header with navbar and a draggable pokeball in the top right corner.
 ![home](src/images/main_page.png)
 
 #### 2. Pokemons page
-Also contains the navbar and a list of all the pokemon cards fetched from the PokeAPI.
-There are 20 pokemon cars in one page and pagination is implemented.
+Also contains a list of all the pokemon cards fetched from the PokeAPI.
+There are 20 pokemon cards in one page and pagination is implemented.
 Cards' size grows when the ball is dragged over.
 
 ![home](src/images/pokemon_list.png)
@@ -33,7 +33,7 @@ When clicking on a pokemon card, we can check the pokemon details on a bigger ca
 
 
 #### 4. Types page
-On types page all the pokemon types are listed which are available on the api
+On types page all the pokemon types are listed which are available on the api.
 
 ![home](src/images/type_list.png)
 
