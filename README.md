@@ -1,6 +1,6 @@
 # Reactomon
 
-## 1. About the project
+## About the project
 
 Reactomon is a simple React frontend SPA without backend.
 The purpose of the project is to learn React in a fun way.
@@ -10,6 +10,13 @@ The theme of the app is Pokemon and I use axios to fetch data from the PokeAPI (
 - I use axios for fetching data from the API
 - I use React context for persisting user data through pages
 - I use drag n drop to "catch" pokemons
+
+### Requirements / installation
+
+- As package manager `npm` is required.
+- Dependencies are included in the `package.json` file.
+- After cloning the project, dependencies can be installed with `npm install` command.
+- For info about how to run the project with npm please see the description below. 
 
 ### Main features
 
@@ -59,7 +66,7 @@ Therefore, when the page is refreshed, everything defaults back to the original 
 
 
 
-## 2. Guide to setting up a React app
+##  Guide to setting up a React app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
